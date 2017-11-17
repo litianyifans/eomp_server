@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.titans.mobile.mapper.StationMapper">
+	<resultMap type="com.titans.mobile.model.Station" id="Station">    
+	    <id column="id" property="id"/>    
+	    <result column="userId" property="userId"/>    
+	    <result column="stationNumber" property="stationNumber"/>    
+	    <result column="stationName" property="stationName"/> 
+	    <result column="city" property="city"/>  
+	    <result column="cityCode" property="cityCode"/>  
+	    <result column="address" property="address"/>  
+	    <result column="lng" property="lng"/>  
+	    <result column="lat" property="lat"/>    
+	    <result column="remark" property="remark"/>   
+	    <result column="imgUrl" property="imgUrl"/> 
+	    <result column="freeCount" property="freeCount"/>
+	    <result column="chargeCount" property="chargeCount"/>
+	    <result column="faultCount" property="faultCount"/>
+	    <result column="offlineCount" property="offlineCount"/>
+	    <association property="org" javaType="com.titans.mobile.model.Org">
+             <id property="id" column="orgId"/>
+             <result property="orgName" column="orgName"/>
+             <result property="orgCode" column="orgCode"/>
+         </association>   
+	</resultMap>   
+ 	<select id="getStationsInfoByUserAccount" parameterType="java.lang.String"  resultMap="Station">
+				SELECT
+					t.*,
+					o.id orgID,
+					o.orgName orgName,
+					o.orgCode orgCode,
+					sum(statusCount) AS sumStakes,
+					'0' AS flag,
+					sum(
+				
+						IF (
+							stakeStatus = '空闲',
+							statusCount,
+							0
+						)
+					) AS freeCount,
+					sum(
+				
+						IF (
+							stakeStatus = '充电',
+							statusCount,
+							0
+						)
+					) AS chargeCount,
+					sum(
+				
+						IF (
+							stakeStatus = '故障',
+							statusCount,
+							0
+						)
+					) AS faultCount,
+					sum(
+				
+						IF (
+							stakeStatus = '离线',
+							statusCount,
+							0
+						)
+					) AS offlineCount
+				FROM
+					(
+						SELECT
+							s.*, rt.stakeChargeStatus AS stakeStatus,
+							COUNT(rt.stakeChargeStatus) AS statusCount
+						FROM
+							eomp_em_station s
+						LEFT JOIN eomp_em_stake t ON s.ID = t.stationId
+						LEFT JOIN eomp_rtm_stakestatus rt ON rt.stakeNum = t.stakeNumber
+						WHERE
+							s.ID IN (
+								SELECT
+									d.bizID
+								FROM
+									eomp_sys_user u left join eomp_sys_datarole d on u.id = d.UserID 
+								WHERE
+									u.userAccount = #{userAccount}
+								AND d.bizIDFlag = 0
+							)
+						GROUP BY
+							s.stationName,
+							rt.stakeChargeStatus
+					) AS t
+				LEFT JOIN eomp_sys_org o ON t.orgId = o.id
+				GROUP BY
+					stationName
+	</select> 
+	
+	<select id="getStakesByStationId" parameterType="java.lang.String"  resultType="com.titans.mobile.model.Stake">
+		SELECT
+			a.*,
+		IF (
+			b.chargeStatus = NULL,
+			'离线',
+			b.chargeStatus
+		) chargeStatus
+		FROM
+			eomp_em_stake a
+		LEFT JOIN eomp_rtm_stakeportstatus b ON a.stakeNumber = b.stakeNum
+		WHERE
+			a.stationId = #{stationId}
+		GROUP BY
+			a.stakeNumber
+	</select>
+	
+	<select id="getStakeInfoByStakeNumber" parameterType="java.lang.String"  resultType="java.util.Map">
+			SELECT
+				stake.address AS stationName,
+				stake.city AS city,
+				stake.alias,
+				stake.chargeCount,
+				stake.power,
+				stake.stakeNumber,
+				stake.prodCode,
+				stake.type,
+				tem. NAME AS template,
+				tem.brand,
+				tem.factory,
+				tem.sysTime,
+				ees.updateTime,
+				ers.stakeChargeStatus,
+				ers.stakeStatus,
+				sps.portStatus
+			FROM
+				eomp_em_stake stake
+			LEFT JOIN eomp_em_template tem ON stake.templateId = tem.ID
+			LEFT JOIN eomp_em_station station ON stake.stationId = station.ID
+			LEFT JOIN eomp_em_stakecomprela ees ON stake.ID = ees.stakeId
+			LEFT JOIN eomp_rtm_stakestatus ers ON stake.stakeNumber = ers.stakeNum
+			LEFT JOIN eomp_rtm_stakeportstatus sps ON stake.stakeNumber = ers.stakeNum
+			WHERE
+				stake.stakeNumber = #{stakeNumber}
+				limit 1
+	</select>
+	
+	<select id="getStakeAlarmByStakeNumber" parameterType="java.lang.String"  resultType="java.util.Map">
+			SELECT
+				pe.partName AS NAME,
+				ale.CODE AS VALUE 
+			FROM
+				(
+					SELECT
+						sl.stakeNum,
+						sl.alarm AS CODE
+					FROM
+						eomp_rtm_stakealarm sl
+					WHERE
+						sl.repairstatus = 0
+					AND sl.stakeNum = #{stakeNumber}
+					UNION
+						SELECT
+							sf.stakeNum,
+							sf.fault AS CODE
+						FROM
+							eomp_rtm_stakefault sf
+						WHERE
+							sf.repairstatus = 0
+						AND sf.stakeNum = #{stakeNumber}
+				) ale,
+				eomp_em_protocol_errcode pe
+			WHERE
+				ale.stakeNum = #{stakeNumber}
+			AND ale. CODE = pe.errCode
+	</select>
+	
+	<select id="getStakeChargeStatusByStakeNumber" parameterType="java.lang.String"  resultType="java.util.Map">
+			SELECT
+				ees.ID,
+				ees.stakeNumber,
+				ees.alias,
+				sps. PORT,
+				sps.chargeStatus,
+				sps.portStatus,
+				erc.chargerStatus,
+				eri.chargingInfo,
+				bms.bmsInfo
+			FROM
+				eomp_em_stake ees
+				LEFT JOIN eomp_rtm_stakeportstatus sps ON ees.stakeNumber = sps.stakeNum
+				LEFT JOIN eomp_rtm_chargerstatus erc ON sps.stakeNum = erc.stakeNum
+				AND sps. PORT = erc.PORT
+				LEFT JOIN eomp_rtm_charginginfo eri ON sps.stakeNum = eri.stakeNum
+				AND sps. PORT = eri.PORT
+				LEFT JOIN eomp_rtm_bmsInfo bms ON sps.stakeNum = bms.stakeNum
+				AND sps. PORT = bms.PORT
+			 WHERE ees.stakeNumber = #{stakeNumber}
+	</select>
+	
+	<select id="findAlarmInfosByUserIdAndOrgId" parameterType="java.util.Map"  resultType="java.util.Map">
+			SELECT
+				a.*, s.alias stakeAlias,
+				s.ID stakeId,
+				f.errText alarmName,
+				g.advice,
+				t.stationName stationName
+			FROM
+				eomp_rtm_stakealarm a
+			LEFT JOIN eomp_em_stake s ON a.stakeNum = s.stakeNumber
+			LEFT JOIN eomp_em_station t ON t.ID = s.stationId
+			LEFT JOIN eomp_em_protocol_errcode f ON f.errCode = a.alarm
+			AND f.errType = 0
+			LEFT JOIN eomp_sys_expertlib g ON g.exceptionCode = a.alarm
+			WHERE
+				a.deleteFlag = '0'
+			AND (
+				s.id IN (
+					SELECT
+						d.bizID
+					FROM
+						eomp_sys_datarole d
+					LEFT JOIN eomp_sys_org o ON d.orgID = o.id
+					WHERE
+						1 = 1
+					AND d.bizIDFlag = 1
+					AND d.userID = #{userId}
+					AND FIND_IN_SET(
+						o.id,
+						queryChildrenOrgInfo (
+							#{orgId}
+						)
+					)
+				)
+			)
+	</select>
+	
+		
+	<select id="findFaultInfosByUserIdAndOrgId" parameterType="java.util.Map"  resultType="java.util.Map">
+			SELECT
+				a.*, s.alias stakeAlias,
+				s.ID stakeId,
+				f.errText faultName,
+				g.advice,
+				t.stationName stationName
+			FROM
+				eomp_rtm_stakefault a
+			LEFT JOIN eomp_em_stake s ON a.stakeNum = s.stakeNumber
+			LEFT JOIN eomp_em_station t ON t.ID = s.stationId
+			LEFT JOIN eomp_em_protocol_errcode f ON f.errCode = a.fault AND f.errType = 1
+			LEFT JOIN eomp_sys_expertlib g ON g.exceptionCode = a.fault
+			WHERE
+				a.deleteFlag = '0'
+			AND (
+				s.id IN (
+					SELECT
+						d.bizID
+					FROM
+						eomp_sys_datarole d
+					LEFT JOIN eomp_sys_org o ON d.orgID = o.id
+					WHERE
+						1 = 1
+					AND d.bizIDFlag = 1
+					AND d.userID = #{userId}
+					AND FIND_IN_SET(
+						o.id,
+						queryChildrenOrgInfo (
+							#{orgId}
+						)
+					)
+				)
+			)
+	</select>
+	
+</mapper>

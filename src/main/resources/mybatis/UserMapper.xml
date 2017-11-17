@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.titans.mobile.mapper.UserMapper">
+		<resultMap type="com.titans.mobile.model.User" id="User">    
+	    <id column="id" property="id"/>    
+	    <result column="userAccount" property="userAccount"/>    
+	    <result column="userName" property="userName"/>    
+	    <result column="email" property="email"/> 
+	    <result column="telephone" property="telephone"/>  
+	    <result column="mobile" property="mobile"/>  
+	    <association property="org" javaType="com.titans.mobile.model.Org">
+	     	 <result property="id" column="orgId"/>
+             <result property="orgName" column="orgName"/>
+             <result property="orgCode" column="orgCode"/>
+        </association> 
+        <association property="role" javaType="com.titans.mobile.model.Role">
+             <result property="roleName" column="roleName"/>
+        </association>   
+	</resultMap> 
+	<select id="getUserByUserAccount" parameterType="java.lang.String" resultMap="User">
+				SELECT
+					u.*,
+					o.id orgId ,
+					o.orgName orgName,
+					o.orgCode orgCode,
+					r.roleName roleName
+				FROM
+					eomp_sys_user u
+				LEFT JOIN eomp_sys_org o ON u.orgID = o.id
+				LEFT JOIN eomp_sys_role r ON o.ID = r.orgID
+				
+				where 
+				    u.userAccount = #{userAccount} LIMIT 1 
+		
+	</select>
+	 
+	<select id="findUserInfo" resultType="com.titans.mobile.model.User">
+		select id from user limit 1
+	</select>
+	
+	<select id="findOrgsByUserId" parameterType="java.lang.String" resultType="com.titans.mobile.model.Org">
+		SELECT * FROM eomp_sys_org WHERE FIND_IN_SET(id,queryChildrenOrgInfo(#{userId}));
+	</select>
+	
+	
+
+</mapper>
