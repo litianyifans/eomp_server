@@ -3,14 +3,14 @@
 	                <h4>充电数据</h4>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>当前SOC</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.bmsInfo | attrFilter:'当前SOC（%）' }}&nbsp;</button>
 							    %
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>剩余时间</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.bmsInfo | attrFilter:'BMS估算剩余充电时间' }}&nbsp;</button>
 							    秒
@@ -19,14 +19,14 @@
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>充电电压</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.bmsInfo | attrFilter:'桩给车的充电电压' }}&nbsp;</button>
 							    V
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>充电电流</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.bmsInfo | attrFilter:'桩给车的充电电流' }}&nbsp;</button>
 							    A
@@ -35,14 +35,14 @@
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>需求电压</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.bmsInfo | attrFilter:'BMS充电电压需求' }}&nbsp;</button>
 							    V
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>需求电流</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.bmsInfo | attrFilter:'BMS充电电流需求' }}&nbsp;</button>
 							    A
@@ -51,14 +51,14 @@
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>充电时间</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'单次当前充电时长' }}&nbsp;</button>
 							    	秒
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>充电电量</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'单次当前充电量' }}&nbsp;</button>
 							    KWH
@@ -70,14 +70,14 @@
 	                <h4>出入数据</h4>
 	                	<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>A相电压</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'A相电压' }}&nbsp;</button>
 							    V
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>A相电流</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'A相电流' }}&nbsp;</button>
 							    A
@@ -86,14 +86,14 @@
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>B相电压</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'B相电压' }}&nbsp;</button>
 							    V
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>B相电流</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'B相电流' }}&nbsp;</button>
 							    A
@@ -102,14 +102,14 @@
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>C相电压</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'C相电压' }}&nbsp;</button>
 							    V
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>C相电流</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargingInfo | attrFilter:'C相电流' }}&nbsp;</button>
 							    A
@@ -118,14 +118,14 @@
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>输出电压</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargerStatus | attrFilter:'输出电压' }}&nbsp;</button>
 							    	V
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>输出电流</code>
 							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">{{ showPort.chargerStatus | attrFilter:'输出电流' }}&nbsp;</button>
 							    A
@@ -137,33 +137,33 @@
 	                <h4>运行状态</h4>
 	                	<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>连接状态：{{ showPort.portStatus | attrFilter: '连接状态' }}</code>
 							    
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>充电状态：{{ showPort.portStatus | attrFilter: '当前充电状态' }}</code>
 							</li>	
 						</div>
 					</div>
 					<div class="mui-row">
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>充电模式：{{ showPort.chargerStatus | attrFilter: '充电模式' }}</code>
 							    
 							</li>
 						</div>
 						<div class="mui-col-xs-6 mui-pull-left">
-							<li style="list-style-type:none; margin-bottom: 5px;">
+							<li class="portTitleWidth">
 							    <code>控制模式：{{ showPort.chargerStatus | attrFilter: '充电控制模式' }}</code>
 							</li>	
 						</div>
 					</div>
 					<ul class="mui-table-view" data-ng-repeat="index in getChargerModeArrays(showPort.chargerStatus)">
 						<div class="mui-row">
-							<div class="mui-col-xs-2 mui-pull-left" style="margin-top: 23px;">
+							<div class="mui-col-xs-2 mui-pull-left" style="padding-left:10px;margin-top: 23px;">
 								<li style="list-style-type:none; margin-bottom: 5px;">
 								    <code>模块{{ index }}</code>
 								</li>
