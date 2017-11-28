@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	    <link rel="stylesheet" href="css/font-awesome.min.css">
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			
+			code{
+				font-family: Helvetica;
+			}
+			.navs {
+				background-color:#57a9fa;
+				width: 100%;
+				height: 80px;
+				position: absolute !important;
+				text-align: center;
+			}
+			
+			.navs>div {
+				float: left;
+				height: 45px;
+				width: 25%;
+				margin-top: 25px;
+				box-sizing: border-box;
+				border-left: 1px rgba(255, 255, 255, 0.5) solid;
+			}
+			.navs>div div:first-child {
+				font-size: 1.4rem;
+				color: white;
+			}
+			.navs>div div:last-child {
+				font-size: 1.2rem;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 100px;
+				max-width: 100px;
+				height: 100px;
+			}
+		</style>
+		
+  </style>
+	</head>
+	<body ng-app="app" ng-controller="stationsCtrl">
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav" style="color:white;font-size:30px;padding-top: 5px;"></a> 
+			<span class="mui-pull-right" ng-click="queryByStationName(stationSearch)" style="color: white;padding-top:10px; font-size:15px;" id="selecename">搜索</span>
+			<div class="mui-input-row mui-pull-right mui-search" style="color:#f7f7f7;width:80%;padding-right: 20px;" >
+			    <input type="search" data-ng-model="stationSearch" class="mui-input-clear" placeholder="查找充电站名称"  >
+			</div>
+		</header>
+		<div class="mui-content">
+			<div class="navs">
+						<div id="friend/friend" style="display: block; border: none;">
+							<div>{{sumChargeCount}}</div>
+							<div>充电</div>
+						</div>
+						<div id="myfatie" tyle="display: block; border: none;">
+							<div>{{sumFreeCount}}</div>
+							<div>空闲</div>
+						</div>
+						<div id="../world/mysubscriptions" tyle="display: block; border: none;">
+							<div>{{sumFaultCount}}</div>
+							<div>故障</div>
+						</div>
+						<div tyle="display: block; border: none;">
+							<div>{{sumOfflineCount}}</div>
+							<div>离线</div>
+						</div>
+			</div>
+			<div  style="background: white;margin-top:80px; text-align: center;">
+				<ul  class="mui-table-view">
+					<li class="mui-table-view-cell" style="border: 0px;">
+						共计<code style="color:blue;font-size:25px ;">{{countStationNumber}}</code>个站,<code style="color: blue;font-size:25px ;">{{sumStakeCount}}</code>个充电桩
+					</li>
+				</ul>
+			</div>
+			
+				<ul class="mui-table-view" id="ss" data-ng-repeat="station in stations">
+					<li class="mui-table-view-cell mui-media">
+						<a href="#" ng-click="queryStationDetail(station)">
+							<div>
+								<i class="fa fa-institution" style="color: #0062AC; font-size: 20px;" ></i>
+								<code>{{ station.stationName }}</code><br>
+								<span class="mui-badge mui-badge-primary mui-pull-right" style="margin-top: -25px;">空闲{{station.freeCount}}</span>
+								<span class="mui-badge mui-badge-purple mui-pull-right" style="margin-top: -5px;margin-left: 2px">离线{{station.offlineCount}}</span>
+								<span class="mui-badge mui-badge-danger mui-pull-right"  style="margin-top: -5px;margin-left: -50px;">故障{{station.faultCount}}</span>
+								<span class="mui-badge mui-badge-success mui-pull-right"  style="margin-top: -25px;margin-left: -50px;">在线{{station.chargeCount}}</span>
+							</div>
+							<br>
+							<div>
+								<p class='mui-ellipsis'>运营商：{{ station.org.orgName }}</p>
+								<p class='mui-ellipsis'>地址：{{ station.address }}</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+    <script type="text/javascript" src="js/app/stationlistController.js"></script>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			.mui-table-view .mui-media-object {
+				line-height: 100px;
+				max-width: 100px;
+				height: 100px;
+			}
+				 .mui-segmented-control .mui-control-item.mui-active {
+			    color: #57a9fa;
+			    background-color:white;
+			    border-bottom: 2px #57a9fa solid;
+			}
+			.mui-segmented-control .mui-control-item {
+				 color: #090909;
+				 border-left: 0px #57a9fa solid;
+			}
+			.mui-segmented-control {
+				 border: 0px #57a9fa solid;
+				 
+			}
+			code{
+				font-size: 14px;
+			}
+		</style>
+  </style>
+	</head>
+	<body ng-app="app" ng-controller="alermInfosCtrl">
+			<ul class="mui-table-view" data-ng-repeat="alarm in alarms" >
+			    <div class="mui-row" style="padding-top:5px;line-height: 10px;">
+			        <div>
+			            <li class="mui-table-view-cell mui-pull-left mui-col-sm-4" style="padding: 6px 4px;">
+			            	<code>站桩名称：{{alarm.stakeAlias}}</code>
+			            </li>
+			        </div>
+			        <div>
+			            <li class="mui-table-view-cell mui-col-sm-8" style="padding: 6px 4px;text-align: right;">
+			            	<code style="color: red;">{{alarm.alarmName}}</code>
+			            </li>
+			        </div>
+			    </div>
+			    <div class="mui-row" style="line-height: 10px;">
+			        <div class="mui-col-sm-6 mui-col-xs-12">
+			            <li class="mui-table-view-cell" style="padding: 6px 4px;">
+			            	<code style="color: gray;font-size:0.8em ;">电站名称：{{alarm.stationName}}</code>
+			            	
+			            </li>
+			        </div>
+			    </div>
+			    <div class="mui-row" style="line-height: 8px;">
+			        <div class="mui-col-sm-6 mui-col-xs-12">
+			            <li class="mui-table-view-cell" style="padding: 6px 4px;">
+			            	<code style="color: black;font-size: 14px;">告警时间：</code>
+			            	<code style="color: gray;font-size: 14px; ;">{{ alarm.updateTime | date:'yyyy-MM-dd HH:mm:ss' }}</code>
+			            </li>
+			        </div>
+			    </div>
+			    <div class="mui-row" style="line-height: 8px;">
+			        <div class="mui-col-sm-6 mui-col-xs-12">
+			            <li class="mui-table-view-cell" style="padding: 6px 4px;">
+			            	<code style="color: black;font-size: 14px;;">处理时间：</code>
+			            	<code style="color: gray;font-size: 14px; ;">{{ alarm.updateTime | date:'yyyy-MM-dd HH:mm:ss' }}</code>
+			            	<span class="mui-badge mui-badge-danger">待修复</span>
+			            </li>
+			        </div>
+			    </div>
+			</ul>		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/app/alarmtInfoController.js"></script>
+	<script>
+		
+	</script>
+</html>

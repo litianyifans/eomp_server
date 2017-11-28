@@ -21,14 +21,33 @@ public class DefaultTokenManager implements TokenManager  {
 	/** 将token存储到JVM内存(ConcurrentHashMap)中    */      
     private static Map<String, String> tokenMap = new ConcurrentHashMap<String, String>();
     
+	/** 将randomCode存储到JVM内存(ConcurrentHashMap)中    */      
+    private static Map<String, String> randomCodeMap = new ConcurrentHashMap<String, String>();
     
 	@Override
-	public String createToken(String username) {
+	public String createToken(String userAccount) {
 		 String token = UUID.randomUUID().toString().replaceAll("-", "");
-	     tokenMap.put(token, username);
+	     tokenMap.put(token, userAccount);
 	     return token;
 	}
-
+	public String getUserAccount(String token){
+		return tokenMap.get(token) ;
+	}
+	public boolean checkRandomCode(String randomCode){
+		return randomCodeMap.containsKey(randomCode);
+	}
+	
+	@Override
+	public boolean  addRandomCodeMap(String randomCode,String userAccount){
+		 randomCodeMap.put(randomCode, userAccount);
+	     return true;
+	}
+	@Override
+	public String  getUserNameByRandCodeMap(String randomCode){
+		return randomCodeMap.get(randomCode);
+	}
+	
+	
 	@Override
 	public boolean checkToken(String token) {
         return !StringUtils.isEmpty(token) && tokenMap.containsKey(token);

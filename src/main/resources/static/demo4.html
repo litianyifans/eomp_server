@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		
+  </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<span class="mui-icon mui-icon-arrowthinleft" style="color:white;font-size:30px;padding-top: 5px;"></span>
+			<h1 class="mui-title" style="color:white;" >二维码登陆</h1>
+		</header>
+		<div class="mui-content">
+			<div id="qrcode">
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+	<script>
+    	  jQuery(function(){
+    			jQuery('#qrcode').qrcode({width:128,height:128,text:RandomString(20)});
+		  })
+    	function RandomString(length) {
+		    var str = '';
+		    for ( ; str.length < length; str += Math.random().toString(36).substr(2) );
+		    return str.substr(0, length);
+		}
+    	  
+</script>
+</html>

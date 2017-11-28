@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			
+		</style>
+	</head>
+	<body ng-app="app" ng-controller="publicsCtrl">
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+						<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>  
+			<h1 class="mui-title" style="color:white;" >公告</h1>
+		</header>
+		<div style="padding-top: 50px;" >
+				<ul class="mui-table-view" data-ng-repeat="public in publics" ng-click="queryPublicDetail(public)">
+			    <div class="mui-row" >
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell" style="padding-bottom:0px;">
+			               <p class="title new" style="font-size: 20px;color: #000;margin-bottom: 0.125rem;">{{public.title}}</p>
+			            </li>
+			    	</div>
+			    </div>
+			    <div class="mui-row">
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell" style="padding-top: 5px;">
+						   <p class="date" >{{ public.updateTime | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+			            </li>
+			    	</div>
+			    </div>
+			    <div class="mui-row">
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell" style="padding-top: 0px;">
+						  <p class="info" >{{public.content| limitTo:30:0}}....</p>
+			            </li>
+			    	</div>
+			    </div>
+			    </ul>
+		</div>
+		
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+	<script type="text/javascript" src="js/app/sysPublicController.js"></script>
+</html>

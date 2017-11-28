@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+  <style>
+  	html,body{
+		background-color:white;
+	}		
+  </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<span class="mui-icon mui-icon-arrowthinleft" style="color:white;font-size:30px;padding-top: 5px;"></span>
+			<h1 class="mui-title" style="color:white;" >二维码登陆</h1>
+		</header>
+		<div class="mui-content" style="background-color: white;">
+			<div style="padding-top: 50px;text-align: center;">
+				<i class="fa fa-desktop" style="color: gainsboro; font-size: 200px;" ></i>
+				<div class="mui-button-row" style="padding: 10px 15px;">
+					<code style="color:gainsboro;font-size: 25px;">PC端登陆确认<code>
+				</div>	
+				<div class="mui-button-row" style="margin: 10px 15px;">
+					<button id="login" type="button" class="mui-btn  own-btn-green mui-btn-block " style="padding: 5px 0px; background-color:#57a9fa;color: white;">登录</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/mui.min.js"></script> 
+    <script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script> 
+	<script>
+		var randomCode = localStorage.getItem('randomCode');
+    	$('#login').click(function(){
+    		var data = {randomCode:randomCode} ;
+    		postData('/oauth/addScanLoginToken',data,function(data){
+                if(data.code == 200) {
+                    localStorage.removeItem('randomCode') ;
+                    mui.openWindow("mine.html", "mine.html");
+                }else{
+                    alert('系统异常！请稍后再试');
+                }
+                
+            }) ;
+    	});
+    	  
+	</script>
+</html>

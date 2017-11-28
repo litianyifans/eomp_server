@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>E3</title>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/own.css"/>
+    <style type="text/css">
+    		.headImg {
+    			padding: 8% 0px 13% 0px;
+    			background: url(image/bg.jpeg);
+    			background-position: center center; 
+    			background-size: 100% auto;
+    		}
+    		
+    		.touxiang {
+    			text-align: center;
+    		}
+    		.touxiang div {
+    			width: 4em;
+    			height: 4em;
+    			padding: 0px;
+    			border-radius: 50%;
+    			border: 2px solid white;
+    			color: gray;
+    			margin: 0px auto;
+    			margin-bottom: 5px;
+    		}
+    		
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>  
+			<h1 class="mui-title" style="color:white;" >个人首页</h1>
+	</header>
+	<div class="mui-content">
+		<div class="mui-col-xs-12" style="height:150px;background-color: #57a9fa;">
+			<div class="touxiang" style="padding: 30px;">
+				<div >
+					<span id="touxiangimg"  class="mui-icon mui-icon-person" style="font-size: 3.8em; color: white;"></span> 
+<!--					<img id="trueimg" src="image/bg.jpeg"  style="width: 100%; height: 100%; border-radius: 50%;" />	
+-->				</div>
+				<span id="touxiangword" style="color: white;"></span>
+			</div>
+		</div>
+		
+		<ul class="mui-table-view" >
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right" href="personInfo.html">
+					<span class="mui-icon iconfont icon-wodedingdan"></span>
+					 个人信息
+				</a>
+			</li>
+		</ul>
+		<ul class="mui-table-view" style="margin-top: 8px;">
+			<li class="mui-table-view-cell">
+				<a id="changeaddress" class="mui-navigate-right" href="scanQrCode.html">
+					<span class="mui-icon mui-icon-locked"></span>
+					扫一扫
+				</a>
+			</li>
+		</ul>
+		<ul class="mui-table-view" style="margin-top: 8px;">
+			<li class="mui-table-view-cell">
+				<a id="changeaddress" class="mui-navigate-right" href="changePassword.html">
+					<span class="mui-icon mui-icon-locked"></span>
+					修改密码
+				</a>
+			</li>
+		</ul>
+		<ul class="mui-table-view" style="margin-top: 8px;">
+			<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-star"></span>
+					<code style="color:gray;">版本信息：EOMP V1.0 正式版</code>
+			</li>
+		</ul>
+		<ul class="mui-table-view" style="margin-top: 8px;">
+			<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-star"></span>
+					<code style="color:gray;">版权所有：珠海泰坦科技股份有限公司</code>
+			</li>
+		</ul>
+		<div class="mui-button-row" style="margin: 10px 15px;">
+			<button id="logout" type="button" class="mui-btn mui-btn-link own-btn-green mui-btn-block" style="padding: 5px 0px;border:#57a9fa;background-color:#57a9fa;color: white;">退出登陆</button>
+		</div>
+		
+	</div>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+	<script type="text/javascript">
+		window.addEventListener('refresh', function(e){//执行刷新
+		    location.reload();
+		});
+		mui('body').on('tap', 'a', function() {
+			mui.openWindow(this.href,this.href);
+		});
+		document.getElementById('touxiangword').innerHTML = localStorage.getItem('userAccount') ;
+		document.querySelector("#logout").addEventListener("tap", function(e) {
+			localStorage.removeItem("token") ;
+			localStorage.removeItem("userAccount");
+			localStorage.removeItem("userId") ;
+			localStorage.removeItem("orgId");
+			mui.openWindow('login.html','login.html');
+		});
+	</script>
+</body>
+</html>

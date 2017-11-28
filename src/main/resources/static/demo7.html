@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+  
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script src="js/mui.min.js"></script>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css" />
+   
+    <style>
+    	  .anchorBL{
+    	  	display:none  
+    	  	} 
+    	  	.navs {
+				background-color:#57a9fa;
+				width: 100%;
+				height: 80px;
+				position: absolute !important;
+				text-align: center;
+			}
+			
+			.navs>div {
+				float: left;
+				height: 45px;
+				width: 25%;
+				margin-top: 25px;
+				box-sizing: border-box;
+				border-left: 1px rgba(255, 255, 255, 0.5) solid;
+			}
+			.navs>div div:first-child {
+				font-size: 1.4rem;
+				color: white;
+			}
+			.navs>div div:last-child {
+				font-size: 1.2rem;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 100px;
+				max-width: 100px;
+				height: 100px;
+			}  
+    </style>
+</head>
+<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a href="home.html"><span class="mui-icon mui-icon-arrowthinleft" style="color:white;font-size:30px;"></span></a>
+			<span class="mui-pull-right" ng-click="queryByStationName(stationSearch)" style="color: white;padding-top:10px; font-size:15px;" id="selecename">搜索</span>
+			<div class="mui-input-row mui-pull-right mui-search" style="color:#f7f7f7;width:80%;padding-right: 20px;" >
+			    <input type="search" data-ng-model="stationSearch" class="mui-input-clear" placeholder="查找充电站名称"  >
+			</div>
+		</header>
+
+		   
+		<div id="mapContainer" style="width:100%;height:84%;"></div>
+			<!--底部导航-->
+		<nav class="mui-bar mui-bar-tab" style="background: white;">
+			<div style="background: white;">
+			<ul class="mui-table-view" id="ss">
+				<li class="mui-table-view-cell mui-media">
+					<a href="#">
+						<div>
+							<i class="fa fa-institution" style="color: #0062AC; font-size: 20px;" ></i>
+							<code>{{stationName}}</code>
+							<span class="mui-badge mui-badge-danger mui-pull-right"  >故障{{faultCount}}</span>
+							<span class="mui-badge mui-badge-purple mui-pull-right"  >离线{{offlineCount}}</span>
+							<span class="mui-badge mui-badge-primary mui-pull-right" >空闲{{freeCount}}</span>
+							<span class="mui-badge mui-badge-success mui-pull-right" >在线{{chargeCount}}</span>
+						</div>
+						<br>
+						<div>
+							<p class='mui-ellipsis'>运营商：{{orgName}}</p>
+							<p class='mui-ellipsis'>地址：{{address }}</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			</div>
+		</nav>
+</body>
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=1ec7d2b3cbe1143b47447109c2bd057c&plugin=AMap.DistrictSearch"></script>
+<script>
+   function init(){
+        var map = new AMap.Map('mapContainer', {
+            center: [117.00, 36.68],
+            zoom: 6
+        });
+        map.setMapStyle("fresh");//默认地图为清新样式
+        map.plugin(["AMap.ToolBar"], function() {
+            map.addControl(new AMap.ToolBar());
+        });
+    }
+   init();
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript"src="js/angular.min.js"></script>
+<script type="text/javascript"src="js/base.js"></script>
+<script type="text/javascript" src="js/checkLogin.js"></script>
+<script type="text/javascript" src="js/app/mapStationController.js"></script>
+</html>

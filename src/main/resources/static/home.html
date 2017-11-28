@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+	</head>
+
+	<body id="bodys" style="background-color: white;">
+
+		<script type="text/javascript" src="js/weixin.js"></script>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<h1 class="mui-title" style="color:snow;"></h1>
+		</header>
+		
+		<div id="offCanvasContentScroll" class="mui-content">
+			<!--描述：轮播-->
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop" style="">
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="image/270748_1495096046131.jpg"></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="image/120178_1490347515940.jpg"></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="image/463771_1498811427502.jpg"></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="image/487375_1499221560339.jpg"></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="image/512215_1499667970690.jpg"></a>
+					</div>
+
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="image/270748_1495096046131.jpg"></a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!--搜索框-->
+			<!--<div class="mui-input-row mui-search" style="background-color: white;">
+				<input id="search" type="search" style="background-color: white;border:1px silver solid; border-radius:50px;margin-top:5px;" class="mui-input-clear" placeholder="">
+			</div>-->
+		    <!--模块-->
+
+			<ul id="jiugongfe" class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="stationList.html">
+						<img src="image/rent-fs3.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">站点监控</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="alermHome.html">
+						<img src="image/rent-fs2.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">告警</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="image/payment-monthly.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">未开发</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="image/brand.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">未开发</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="image/1ss.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">未开发</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="image/1ees.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">未开发</div>
+					</a>
+				</li>
+
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="stakeBaseInfo.html">
+						<img src="image/1ee.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">未开发</div>
+					</a>
+				</li>
+
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="alermInfo.html">
+						<img src="image/1tyl.png" style="height:30px;width:30px;" />
+						<div class="mui-media-body">未开发</div>
+					</a>
+				</li>
+			</ul>
+			
+		</div>
+		
+		<!--底部导航-->
+		<nav class="mui-bar mui-bar-tab" style="background: white;">
+			<a class="mui-tab-item mui-active" href="home.html" >
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item " href="notice.html" >
+				<span class="mui-icon mui-icon-paperplane"></span>
+				<span class="mui-tab-label">公告</span>
+			</a>
+			<a class="mui-tab-item " href="mine.html" >
+				<span class="mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/vconsole.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/checkLogin.js"></script>
+		<script type="text/javascript">
+			mui.init() ;
+			mui('body').on('tap', 'a', function() {
+				mui.openWindow(this.href,this.href);
+			});
+			//退出
+			var first = null;
+			mui.back = function() {
+			//首次按键，提示‘再按一次退出应用’
+			if(!first) {
+				first = new Date().getTime();
+				mui.toast('再按一次退出应用');
+				setTimeout(function() {
+					first = null;
+				}, 1000);
+			} else {
+				if(new Date().getTime() - first < 1000) {
+					plus.runtime.quit();
+				}
+			}
+
+			}
+			//左右滑动高亮tab选项卡
+			function tabsActive(index) {
+				$(".mui-tab-item").each(function(i, obj) {
+					if(i == index) {
+						$(obj).removeClass("mui-active").addClass("mui-active");
+					} else {
+						$(obj).removeClass("mui-active");
+					}
+				});
+			}
+			
+		</script>
+	</body>
+
+</html>

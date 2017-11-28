@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>E3</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/own.css" />
+		<style type="text/css">
+			/*.headImg {
+				padding: 8% 0px 13% 0px;
+				background: url(image/bg.jpeg);
+				background-position: center center;
+				background-size: 100% auto;
+			}*/
+			
+			.touxiang {
+				text-align: center;
+			}
+			
+			.touxiang div {
+				width: 4em;
+				height: 4em;
+				padding: 0px;
+				border-radius: 50%;
+				border: 2px solid white;
+				color: gray;
+				margin: 0px auto;
+				margin-bottom: 5px;
+			}
+			.remark{
+				color: gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a href="mine.html"><span class="mui-icon mui-icon-arrowthinleft" style="color:white;font-size:30px;padding-top: 5px;"></span>
+			</a>
+			<h1 class="mui-title" style="color:white;">个人信息</h1>
+		</header>
+		<div class="mui-content"  ng-app="app" ng-controller="personInfoCtrl">
+			<ul class="mui-table-view" style="margin-top: 8px;">
+			<div class="mui-row">
+				<div class="mui-col-xs-6   mui-pull-left" style="height: 80px;">
+					<li class="mui-table-view-cell"style="margin: 20px 10px;" >
+						头像
+					</li>
+				</div>
+				<div class="mui-col-xs-6  mui-pull-left" style="height: 80px;">
+					<li class="mui-table-view-cell mui-pull-right">
+						<img class="app-yuan" src="image/centerhead.png" style="width: 60px;"/>
+					</li>
+				</div>
+			</div>
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 8px;">
+			<div class="mui-row">
+				<div class="mui-col-xs-6   mui-pull-left" >
+					<li class="mui-table-view-cell"style="margin: 6px 10px;" >
+						名称
+					</li>
+				</div>
+				<div class="mui-col-xs-6  mui-pull-left" >
+					<li class="mui-table-view-cell mui-pull-right" style="margin: 8px 3px;" >
+						<code class="remark">
+							{{userInfo.userName}}
+						</code>
+					</li>
+				</div>
+			</div>
+			</ul>
+			<ul class="mui-table-view" >
+			<div class="mui-row">
+				<div class="mui-col-xs-6   mui-pull-left" >
+					<li class="mui-table-view-cell"style="margin: 6px 10px;" >
+						手机号
+					</li>
+				</div>
+				<div class="mui-col-xs-6  mui-pull-left" >
+					<li class="mui-table-view-cell mui-pull-right" style="margin: 6px 3px;" >
+						<code class="remark">
+							{{userInfo.mobile}}
+						</code>
+					</li>
+				</div>
+			</div>
+			</ul>
+			<ul class="mui-table-view" >
+			<div class="mui-row">
+				<div class="mui-col-xs-6   mui-pull-left" >
+					<li class="mui-table-view-cell"style="margin: 6px 10px;" >
+						邮箱
+					</li>
+				</div>
+				<div class="mui-col-xs-6  mui-pull-left" >
+					<li class="mui-table-view-cell mui-pull-right" style="margin: 6px 3px;" >
+						<code class="remark">
+							{{userInfo.email}}
+						</code>
+					</li>
+				</div>
+			</div>
+			</ul>
+			
+				<ul class="mui-table-view" style="margin-top: 8px;">
+			<div class="mui-row">
+				<div class="mui-col-xs-6   mui-pull-left" >
+					<li class="mui-table-view-cell"style="margin: 6px 10px;" >
+						角色
+					</li>
+				</div>
+				<div class="mui-col-xs-6  mui-pull-left" >
+					<li class="mui-table-view-cell mui-pull-right" style="margin: 8px 3px;" >
+						<code class="remark">
+							{{userInfo.role.roleName}}
+						</code>
+					</li>
+				</div>
+			</div>
+			</ul>
+			<ul class="mui-table-view" >
+			<div class="mui-row">
+				<div class="mui-col-xs-6   mui-pull-left" >
+					<li class="mui-table-view-cell"style="margin: 6px 10px;" >
+						所属组织
+					</li>
+				</div>
+				<div class="mui-col-xs-6  mui-pull-left" >
+					<li class="mui-table-view-cell mui-pull-right" style="margin: 6px 3px;" >
+						<code class="remark">
+							{{userInfo.org.orgName}}
+						</code>
+					</li>
+				</div>
+			</div>
+			</ul>
+		</div>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+    <script type="text/javascript" src="js/app/personInfoController.js"></script>
+	</body>
+
+</html>

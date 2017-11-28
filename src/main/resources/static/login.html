@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<style type="text/css">
+			/*下面两项是重置muicss的输入框label和input之间的宽比率*/
+			.mui-input-row label {
+				width: 20%;
+			}
+			.mui-input-row label~input {
+				width: 80%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<h1 class="mui-title" style="color:white;">用户登陆</h1>
+		</header>
+
+		<div class="mui-content">
+			<div style="margin-top: 30px; text-align: center;">
+				<span class="mui-icon mui-icon-person" style="font-size: 4em; border: 2px solid gray; border-radius: 50%; color: gray;"></span>
+			</div>
+			<div class="mui-card" style="margin-top: 20px;">
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label><span class="mui-icon mui-icon-person"></span></label>
+						<input id="username" type="text" class="mui-input-clear" value="" placeholder="请输入手机号用户名" />
+					</div>
+					<div class="mui-input-row">
+						<label><span class="mui-icon mui-icon-locked"></span></label>
+						<input id="password" type="password" class="mui-input-clear" value="" placeholder="请输入密码" />
+					</div>
+				</form>
+			</div>
+			<div class="mui-button-row" style="margin: 10px 15px;">
+				<button id="login" type="button" class="mui-btn  own-btn-green mui-btn-block " style="padding: 5px 0px; background-color:#57a9fa;color: white;">登录</button>
+			</div>
+			<div class="mui-button-row" style="padding-top: 0px;">
+				<button id="register" type="button" class="mui-btn mui-btn-link own-main-color own-font-size" style="padding-top: 0px; margin-right: 60px;font-size: 1em;color: #41cea9; ">快速注册</button>
+				<button id="forgetPassword" type="button" class="mui-btn mui-btn-link own-font-size" style="padding-top: 0px; margin-left: 60px; color: #FF6A6A;font-size: 1em;">忘记密码</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/vconsole.min.js"></script>
+		<script>
+			mui.plusReady(function(){
+	     		alert("当前页面URL："+plus.webview.currentWebview().getURL());
+			});
+			console.log('hello world');
+			/**
+			 * 登录
+			 */
+			document.querySelector("#login").addEventListener("tap", function(e) {
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("password").value;
+				if("" == username) {
+					mui.alert("姓名必须填写", "登陆", "确认");
+					return;
+				} else if("" == password) {
+					mui.alert("密码必须填写", "登陆", "确认");
+					return;
+				}
+				//利用ajax访问远程数据
+				var data = {
+					username: username,
+					password: password
+				};
+				postData('/oauth/token', data, function(data) {
+					if(data.code == 200) {
+						var result = data.data ;
+						var token = result.authToken ;
+						var userAccount = result.userAccount ;
+						var userId = result.userId ;
+						var orgId = result.orgId  ;
+						localStorage.removeItem('token');
+						localStorage.removeItem('userAccount');
+						localStorage.removeItem('userId');
+						localStorage.removeItem('orgId');
+						localStorage.setItem('token',token) ;
+						localStorage.setItem('userAccount',userAccount) ;
+						localStorage.setItem('userId',userId) ;
+						localStorage.setItem('orgId',orgId) ;
+						mui.openWindow(BASE_SERVER_URL+"/"+"home.html", "home.html");
+					} else {
+						mui.toast("网络异常");
+					}
+				});
+			});
+			//退出
+			var first = null;
+			mui.back = function() {
+				//首次按键，提示‘再按一次退出应用’
+				if(!first) {
+					first = new Date().getTime();
+					mui.toast('再按一次退出应用');
+					setTimeout(function() {
+						first = null;
+					}, 1000);
+				} else {
+					if(new Date().getTime() - first < 1000) {
+						plus.runtime.quit();
+					}
+				}
+
+			};
+			document.querySelector("#register").addEventListener('tap', function(e) {
+				mui.alert("注册,请联系管理员");
+			});
+			document.querySelector("#forgetPassword").addEventListener('tap', function(e) {
+				mui.alert("忘记密码,请联系管理员");
+			});
+		</script>
+	</body>
+
+</html>

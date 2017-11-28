@@ -1,0 +1,41 @@
+			<ul class="mui-table-view" data-ng-repeat="alarm in alarms" >
+			    <div class="mui-row" style="padding-top:5px;line-height: 10px;">
+			        <div>
+			            <li class="mui-table-view-cell mui-pull-left mui-col-sm-4" >
+			            	<i class="icon iconfont icon-chongdianzhuang" style="color: #0062AC;font-size:19px;"></i>
+			            	<code>{{alarm.stakeAlias}}</code>
+			            </li>
+			        </div>
+			        <div>
+			            <li class="mui-table-view-cell mui-col-sm-8" style="padding: 10px 9px;text-align: right;">
+			            	<code style="color: red;">{{alarm.alarmName}}</code>
+			            </li>
+			        </div>
+			    </div>
+			    <div class="mui-row" style="line-height: 6px;">
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell" >
+			            	<i class="fa fa-institution" style="color: #0062AC; font-size: 16px;" ></i>
+			            	<code style="color: gray;">{{alarm.stationName}}</code>
+			            	<span data-ng-show="alarm.repairStatus|statusFilter:'1'" class="mui-badge mui-badge-success">已修复</span>
+			            	<span data-ng-show="alarm.repairStatus|statusFilter:'0'" class="mui-badge mui-badge-danger">待修复</span>
+			            </li>
+			        </div>
+			    </div>
+			    <div class="mui-row" style="line-height: 8px;">
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell">
+			            	<code style="color: black;font-size: 14px;">告警时间：</code>
+			            	<code style="color: gray;font-size: 14px; ;">{{ alarm.updateTime | date:'yyyy-MM-dd HH:mm:ss' }}</code>
+			            </li>
+			        </div>
+			    </div>
+			    <div class="mui-row" style="line-height: 8px;">
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell" >
+			            	<code style="color: black;font-size: 14px;;">处理时间：</code>
+			            	<code style="color: gray;font-size: 14px; ;">{{ alarm.dealTime | date:'yyyy-MM-dd HH:mm:ss' }}</code>
+			            </li>
+			        </div>
+			    </div>
+			</ul>		

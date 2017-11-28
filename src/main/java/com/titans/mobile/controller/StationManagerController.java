@@ -83,7 +83,7 @@ public class StationManagerController {
 		 paramMap.put("orgId", orgId);
 		List<Map<String,Object>> alarmInfos = stationService.findFaultInfosByUserIdAndOrgId(paramMap);
 		return  new ResponseResult(alarmInfos);
-	}
+	}  
 	
 	
 

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    
+    <link rel="stylesheet" href="css/mui.min.css" />
+   <link rel="stylesheet" href="css/bootstrap.css" />
+   
+    <style>
+    .ui-page-login, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+img{
+	max-width: 100%;
+}.bg-bubbles {
+  
+  height:500px;
+
+}
+
+::-webkit-input-placeholder{color:white;}
+
+ .title_show{
+ 	-webkit-transition:myfirst 2s;
+
+ 	
+ }   
+    .title_hide{
+ 	display: none;
+ -webkit-transition:height 0s linear 2s;
+ 
+ }
+ @keyframes myfirst{
+ 	from {display: block;}
+ 	to {display: none;}
+ } 
+ 
+ @keyframes myfirst2{
+ 	from {display: block;}
+ 	to {display: none;}
+ } 
+    	
+    </style>
+ 
+</head>
+<body >
+
+	
+		<div class="mui-content" style=" background: url(image/banner4.jpg););background-size: cover;   background-repeat: no-repeat;
+  opacity: 0.8; z-index: 10;height:hidden ; overflow: hidden; "> 
+  			
+			<div class="mui-row title_hide "  id="title_wram">
+				<div style="width:100%;background-color: white; height: 60px;">
+					<p id="passtitle" style="line-height: 60px;" class="mui-text-center"><span class="mui-icon mui-icon-help" style="color:blue"></span>&nbsp;请输入账号</p>
+				</div>
+				
+			</div>
+			<div class="mui-row  ">&nbsp;</div>
+			<div class="mui-row  ">&nbsp;</div>
+			<div class="mui-row  ">&nbsp;</div>
+		
+		
+			
+			<h1 class="text-center" style="color:white;font-family: '微软雅黑';">EOMP</h1>
+			<div class="mui-row  ">&nbsp;</div>
+			<div class="mui-row  ">&nbsp;</div>
+			<div class="mui-row  ">&nbsp;</div>
+			
+			
+			
+		<div class="mui-input-group" style="z-index: 100;background-color: #171B18; opacity:0.5">
+				<div class="mui-input-row " style="color:#FC8686;" >
+					<label ><span class="mui-icon mui-icon-email"></span></label>
+					<input id="username" name="username" class="mui-input-clear mui-input" placeholder="请输入账号">
+				</div>
+				
+				<div class="mui-input-row" style="color:#FC8686;" >
+					<label ><span class="mui-icon mui-icon-locked"></span></label>
+					<input id="password" name="password" type="password" class="mui-input-clear mui-input-password" placeholder="请输入密码">
+				</div>
+				</div>
+		
+			
+				<div class="mui-input-group" style="opacity:0.6;z-index: 100;" >
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						自动登录
+						<div id="autoLogin" class="mui-switch"  style="color:#FC8686;" >
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+				</div>
+			
+			<div class="mui-row  ">&nbsp;</div>
+			<div class="mui-content-padded" style="margin: 0px;z-index: 100;">
+				<button id='login' class="mui-btn-block" style="background-color:#444444 ;opacity:0.3;border-radius: 20px; color: white;">登录</button>
+				<div class="mui-row  ">&nbsp;</div>
+				<div class="link-area text-right" style="font-size: 16px;color: blue;"><!--<a id='reg' class="mui-text-primary">注册账号</a> </<a><span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>-->
+				</div>
+			</div>
+		
+			<hr/ style="border: 1px white solid;width:80%;text-align: center;">
+			<div class="mui-row  ">&nbsp;</div>
+				<h5 style="color:white;text-align: center;">eomp运维平台 © 2017 泰坦科技</h5>
+			<div class="mui-row  ">&nbsp;</div>
+			<div class="mui-row  ">&nbsp;</div>
+				<div class="mui-row  ">&nbsp;</div>
+					<div class="mui-row  ">&nbsp;</div>
+						<div class="mui-row  ">&nbsp;</div>
+						
+							<div class="mui-row">&nbsp;</div>
+								<div class="mui-row  ">&nbsp;</div>
+			
+	</div>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js" ></script>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	mui.plusReady(function(){
+      		
+      	})
+    </script>
+   
+	<script>
+	   //链接注册
+	 /*  document.getElementById("reg").addEventListener("tap",function(){
+	   		mui.openWindow({
+	   			url:"regeit.html",
+	   			id:"reg"
+	   		});
+	   	
+	   	
+	  })*/
+	    
+		var tilet_id=document.getElementById("title_wram");
+	function cheak2(){
+		if(document.getElementById("username").value.trim()==""){
+			tilet_id.className="title_show";
+			return false;
+		}
+		
+		if(document.getElementById("password").value.trim()==""){
+			document.getElementById("passtitle").innerHTML="<span class='mui-icon mui-icon-help' style='color:blue'></span>&nbsp;请输入密码";
+			tilet_id.className="title_show";
+			return false;
+		}
+		
+	}
+	/**
+	 * 登录
+	 */
+		document.querySelector("#login").addEventListener("tap",function(e)	{
+				var username=document.getElementById("username").value;
+				var password=document.getElementById("password").value;
+				if("" == username) {
+					mui.alert("姓名必须填写", "登陆信息验证", "确认");
+					return;
+				} else if("" == password) {
+					mui.alert("密码必须填写", "登陆信息验证", "确认");
+					return;
+				}
+				//利用ajax访问远程数据
+			 var data = {username:username,password:password};
+				 mui.ajax('http://112.91.82.56:8086/oauth/token',{  
+				        data:data,  
+				        dataType:'json',  
+				        type:'post',
+				        xhrFields: {
+				            withCredentials: true
+				        },
+				        crossDomain: true,
+				        timeout:60000,  
+				        success:function(data){
+				        	if(data.code == 200){
+				        		mui.openWindow("home.html","home.html");
+				        	}else{
+				        		 mui.toast("网络异常");
+				        	}
+				        },
+				        error:function(e){  
+				            mui.toast("网络异常");
+				        }  
+				}); 
+				//mui.openWindow("home.html","home.html");
+			//退出
+			var first = null;
+			mui.back = function() {
+				//首次按键，提示‘再按一次退出应用’
+					if (!first) {
+						first = new Date().getTime();
+						mui.toast('再按一次退出应用');
+						setTimeout(function() {
+							first = null;
+						}, 1000);
+					} else {
+						if (new Date().getTime() - first < 1000) {
+							plus.runtime.quit();
+						}
+					}
+				
+			}
+		});
+	
+    </script>
+</body>
+</html>

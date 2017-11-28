@@ -1,0 +1,228 @@
+
+			<ul class="mui-table-view">
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>充电状态</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+				        		{{ stake.stakeChargeStatus }}
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>桩状态</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								   <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >
+									    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'桩状态'">正常</span>
+	                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'桩状态'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>直流接触器</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span class="normal" data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'直流接触器'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'直流接触器'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>计费单元通讯</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'计费单元'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'计费单元'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>监控单元通讯</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'监控单元'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'监控单元'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>执行单元通讯</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        		<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'执行单元'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'执行单元'">故障</span>
+                                    </span>
+				        		</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>充电枪</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'充电枪'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'充电枪'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>电子锁</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'电子锁'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'电子锁'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>充电模块</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'充电模块'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'充电模块'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>BMS电子锁</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								    <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								    <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'BMS'">正常</span>
+                                    <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'BMS'">故障</span>
+                                    </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>AC输入</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								  <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								  <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'AC'">正常</span>
+                                  <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'AC'">故障</span>
+                                  </span>
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+			<ul class="mui-table-view" id="ss" >
+				<div class="mui-row">
+					 <div class="mui-col-xs-3 mui-pull-left">
+					 	<li style="margin-top: 10px;margin-bottom: 10px;">
+				        	<code>DC输出</code>
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-9 mui-pull-right">
+					  	<li style="margin-top: 10px;margin-bottom: 10px;text-align: right;">
+				        	<code style="color: gray;">
+								  <span data-ng-hide="stake.stakeChargeStatus|isAttrContainerFilter:'离线'" >&nbsp;&nbsp;
+								  <span class="normal" data-ng-hide="statkeErrorStatuses | attrFilter:'DC'">正常</span>
+                                  <span class="error" data-ng-show="statkeErrorStatuses | attrFilter:'DC'">故障</span>
+                                  </span> 
+				        	</code>
+				        </li>	
+					 </div>
+				</div>
+			</ul>
+	

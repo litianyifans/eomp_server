@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,7 +59,7 @@ public class TokenController {
 	@RequestMapping(value="/token" ,method = RequestMethod.POST)
 	@IgnoreSecurity
 	public ResponseResult login(@RequestParam("username") String username,
-			@RequestParam("password") String password, HttpServletResponse response) {
+			@RequestParam("password") String password) {
 		boolean flag = true ;
 		UserSecurity userSecurity = userService.getUserSecurityByUserId(username) ;
 		
@@ -86,13 +87,55 @@ public class TokenController {
 			sessionInfo.put(Constants.USER_ACCOUNT, username) ;
 			sessionInfo.put(Constants.USER_ID, user.getId()) ;
 			sessionInfo.put(Constants.ORG_ID, user.getOrg().getId()) ;
-			//CookieUtil.addCookie(response, Constants.DEFAULT_TOKEN_NAME, token, Constants.TOKEN_EXPIRES_HOUR);
-			//CookieUtil.addCookie(response, Constants.USER_ACCOUNT, username, Constants.TOKEN_EXPIRES_HOUR);
-			//CookieUtil.addCookie(response, Constants.USER_ID, user.getId(), Constants.TOKEN_EXPIRES_HOUR);
-			//CookieUtil.addCookie(response, Constants.ORG_ID, user.getOrg().getId(), Constants.TOKEN_EXPIRES_HOUR);
 			return new ResponseResult(sessionInfo);
 		}
 		return new ResponseResult(ResultCode.LOGIN_CHECK_ERROR);
+	}
+	
+	
+	@RequestMapping(value="/checkRandomCode/{randomCode}" ,method = RequestMethod.GET)
+	public ResponseResult checkRandomCode(@PathVariable("randomCode") String randomCode) {
+	  System.out.println("randomCode:"+randomCode);	
+	  boolean flag = defaultTokenManager.checkRandomCode(randomCode);
+	  if(flag){
+		  return new ResponseResult();
+	  }else{
+		  return new ResponseResult(ResultCode.QRCODE_NULL_ERROR);
+	  }
+	 
+	}
+	@RequestMapping(value="/addScanLoginToken" ,method = RequestMethod.POST)
+	public ResponseResult addScanLoginToken(@RequestParam("randomCode") String randomCode) {
+	  String token = WebContextUtil.getRequest().getHeader(
+	                Constants.DEFAULT_TOKEN_NAME);
+	  
+	  String userAccount = defaultTokenManager.getUserAccount(token) ;
+	  System.out.println("addToken:"+token);
+	  System.out.println("userAccount:"+userAccount);
+	  System.out.println("randomCode:"+randomCode);
+	  boolean flag = defaultTokenManager.addRandomCodeMap(randomCode.trim(),userAccount) ;
+	  System.out.println("flag:"+flag);
+	  if(flag){
+		  return new ResponseResult();
+	  }else{
+		  return new ResponseResult(ResultCode.ADD_QRCODE_ERROR);
+	  }
+	 
+	}
+	
+	@RequestMapping(value="/checkScanLoginToken/{randomCode}" ,method = RequestMethod.GET)
+	@IgnoreSecurity
+	public ResponseResult checkScanLoginToken(@PathVariable("randomCode") String randomCode) {
+	   System.out.println("checkScanLoginToken---randomCode:"+randomCode);
+	   String userAccount = defaultTokenManager.getUserNameByRandCodeMap(randomCode.trim()) ;
+	   System.out.println("checkScanLoginToken---userAccount:"+userAccount);
+	   if("".equals(userAccount)||userAccount == null){
+		   return new ResponseResult(ResultCode.QRCODE_USERNAME_ERROR);
+	   }else{
+		   Map result = new HashMap<String,String>() ;
+		   result.put("userAccount", userAccount) ;
+		   return new ResponseResult(result) ;
+	   }
 	}
 	
 	/**     

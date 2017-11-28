@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/iconfont1.css">
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			
+			
+			.navs {
+				background-color:#57a9fa;
+				width: 100%;
+				height: 80px;
+				position: absolute !important;
+				text-align: center;
+			}
+			
+			.navs>div {
+				float: left;
+				height: 45px;
+				width: 25%;
+				margin-top: 25px;
+				box-sizing: border-box;
+				border-left: 1px rgba(255, 255, 255, 0.5) solid;
+			}
+			.navs>div div:first-child {
+				font-size: 1.4rem;
+				color: white;
+			}
+			.navs>div div:last-child {
+				font-size: 1.2rem;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 100px;
+				max-width: 100px;
+				height: 100px;
+			}
+		</style>
+		
+  </style>
+	</head>
+	<body ng-app="app" ng-controller="stationDetailCtrl">
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>  
+			<h1 class="mui-title" style="color:white;" >充电站详情</h1>
+		</header>
+		<div class="mui-content">
+			<div style="background: white;">
+			<ul class="mui-table-view" id="ss">
+				<li class="mui-table-view-cell mui-media">
+					<a>
+						<div>
+							<i class="fa fa-institution" style="color: #0062AC; font-size: 20px;" ></i>
+							<code>{{stationName}}</code>
+							<span class="mui-badge mui-badge-danger mui-pull-right"  >故障{{faultCount}}</span>
+							<span class="mui-badge mui-badge-purple mui-pull-right"  >离线{{offlineCount}}</span>
+							<span class="mui-badge mui-badge-primary mui-pull-right" >空闲{{freeCount}}</span>
+							<span class="mui-badge mui-badge-success mui-pull-right" >在线{{chargeCount}}</span>
+						</div>
+						<br>
+						<div>
+							<p class='mui-ellipsis'>运营商：{{orgName}}</p>
+							<p class='mui-ellipsis'>地址：{{address }}</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			</div>
+			<!--弹出菜单1-->
+			<div id="popoverType" class="mui-popover">
+			  <ul class="mui-table-view">
+			    <li class="mui-table-view-cell"><a href="#" ng-click="queryByStakeType('直流')">直流</a></li>
+			    <li class="mui-table-view-cell"><a href="#" ng-click="queryByStakeType('交流')" >交流</a></li>
+			  </ul>
+			</div>
+			<!--弹出菜单2-->
+			<div id="popoverStatus" class="mui-popover">
+			  <ul class="mui-table-view">
+			    <li class="mui-table-view-cell"><a href="#" ng-click="queryByStakeStatus('在线')">在线</a></li>
+			    <li class="mui-table-view-cell"><a href="#" ng-click="queryByStakeStatus('空闲')">空闲</a></li>
+			    <li class="mui-table-view-cell"><a href="#" ng-click="queryByStakeStatus('离线')">离线</a></li>
+			    <li class="mui-table-view-cell"><a href="#" ng-click="queryByStakeStatus('故障')">故障</a></li>
+			  </ul>
+			</div>
+			<!-- 锚点-->
+			<div style="background: white; margin-top: 10px;" >
+				<div class="mui-row">
+	   				<ul class="mui-table-view mui-col-xs-6 mui-pull-left" > 
+						<li id="stakeType"  class="mui-table-view-cell mui-collapse" >
+				            <a class="mui-navigate-right" >类型</a>
+				        </li>
+	   				</ul>
+	   					<ul class="mui-table-view mui-col-xs-6 mui-pull-left" > 
+						<li id="stakeStatus" class="mui-table-view-cell mui-collapse" >
+				            <a class="mui-navigate-right" >状态</a>
+				        </li>
+	   				</ul>
+   				</div>
+			</div>
+			<ul ng-click="queryStakeDetail(stake)" class="mui-table-view" id="ss" data-ng-repeat="stake in stakes">
+				<div class="mui-row">
+					 <div class="mui-col-xs-2 mui-pull-left" style="height: 75px;">
+					 	<i class="ui-media-object mui-pull-left icon iconfont icon-chongdianzhuang" style="padding-top:23px;padding-left:15px;color: #0062AC;font-size:39px;"></i>
+					 	<!--<img class="mui-media-object mui-pull-left" src="image/2002150_1499395420461.jpg" style="width:80px;height: 80px;">-->
+					 </div>
+					 <div class="mui-col-xs-8">
+					 	<li style="margin-top: 10px;">
+					 		名称：{{stake.alias}}
+				        </li>
+				        <li style="margin-top: 10px;">
+				        	类型：{{stake.type}}
+				        </li>
+					 </div>
+					 <div class="mui-col-xs-2">
+					  	<li style="margin-top: 18px;">
+				        	<span style="padding:14px 7px;"  class="mui-badge mui-badge-success" data-ng-show="stake.chargeStatus|statusFilter:'充电'">充电</span>
+				        	<span style="padding:14px 7px;"  class="mui-badge mui-badge-primary" data-ng-show="stake.chargeStatus|statusFilter:'空闲'">空闲</span>
+				        	<span style="padding:14px 7px;"  class="mui-badge mui-badge-purple" data-ng-show="stake.chargeStatus|statusFilter:'离线'">离线</span>
+				        	<span style="padding:14px 7px;"  class="mui-badge mui-badge-danger" data-ng-show="stake.chargeStatus|statusFilter:'故障'">故障</span>
+				        </li>	
+					 </div>
+				</div>	
+			</ul>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+	<script type="text/javascript" src="js/app/stationDetailController.js"></script>
+	<script>
+		
+		document.getElementById("stakeType").addEventListener("tap",function(){
+			mui('#popoverType').popover('toggle',document.getElementById("stakeType"));
+		});
+		document.getElementById("stakeStatus").addEventListener("tap",function(){
+			mui('#popoverStatus').popover('toggle',document.getElementById("stakeStatus"));
+		});
+		
+	</script>
+</html>

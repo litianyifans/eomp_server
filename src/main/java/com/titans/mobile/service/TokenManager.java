@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
  */ 
 @Service
 public interface  TokenManager {
-	String createToken(String username);  
+	String createToken(String userAccount);
+	String getUserAccount(String token) ;
+	boolean checkRandomCode(String randomCode);
+	boolean addRandomCodeMap(String randomCode,String userAccount);
+	String  getUserNameByRandCodeMap(String randomCode);
     boolean checkToken(String token); 
     String refreshToken(String token) ;
     void deleteToken(String token);

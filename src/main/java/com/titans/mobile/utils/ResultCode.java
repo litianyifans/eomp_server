@@ -25,10 +25,17 @@ public enum ResultCode {
     /** AuthCode错误 */  
     INVALID_AUTHCODE("444", "无效的Token"),  
     
-   
-  
     /** 太频繁的调用 */  
-    TOO_FREQUENT("445", "太频繁的调用"),  
+    TOO_FREQUENT("445", "太频繁的调用"), 
+    
+    /** 添加扫码token失败 */  
+    ADD_QRCODE_ERROR("446", "添加扫码token失败"),  
+    
+    /** 获取RandomCodeMap的用户名失败 */  
+    QRCODE_USERNAME_ERROR("447", "获取RandomCodeMap的用户名失败"),  
+    
+    /** 二维码不存在 */  
+    QRCODE_NULL_ERROR("448", "二维码不存在"), 
       
     /** 未知的错误 */  
     UNKNOWN_ERROR("499", "未知错误");  

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			 .mui-segmented-control .mui-control-item.mui-active {
+			    color: #57a9fa;
+			    background-color:white;
+			    border-bottom: 2px #57a9fa solid;
+			}
+			.mui-segmented-control .mui-control-item {
+				 color: #090909;
+				 border-left: 0px #57a9fa solid;
+			}
+			.mui-segmented-control {
+				 border: 0px #57a9fa solid;
+				 
+			}
+			   html,#slider,.mui-content{
+                width: 100%;
+                height: 100%;
+            }
+            h4 {
+			    padding: 0.5rem;
+			    font-size: 1rem;
+			    color: #57a9fa;
+			    font-weight: normal;
+			    border-bottom: 1px solid #d9d9d9;
+			    margin-bottom: 0.5rem;
+			}
+            body{
+                margin-top: 0px;
+                width: 100%;
+                height: calc(100% - 45px);
+            }
+            .mui-slider-group{
+                height: calc(100% - 45px);
+            }
+            .mui-control-content {
+                background-color: white;
+            }
+
+            .mui-control-content .mui-loading {
+                margin-top: 50px;
+            }
+            code{
+            	font-size: 0.8em;
+            }
+		</style>
+		
+  </style>
+	</head>
+	<body ng-app="app" ng-controller="sakeBaseInfoCtrl">
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>  
+			<h1 class="mui-title" style="color:white;" >充电桩详情</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-segmented-control" style="background-color:white;">
+				<div class="mui-scroll" >
+					<a href="#stakeBaseInfo" class="mui-control-item mui-active">基本信息</a>
+					<a href="#stakeStatusInfo" class="mui-control-item">状态信息</a>
+					<a href="#stakePort" class="mui-control-item" >A充电口</a>
+					<a href="#stakePortB"class="mui-control-item" >B充电口</a>
+				</div>
+				<div class="mui-slider-group"style="padding-top: 40px;"ng-app="app" ng-controller="sakeBaseInfoCtrl">
+					<div id="stakeBaseInfo" class="mui-slider-item mui-control-content mui-active" >
+						<div data-ng-include="'stakeBaseInfo.html'">
+						</div>
+	                </div>
+	                <div id="stakeStatusInfo" class="mui-slider-item mui-control-content ">
+	                  	<div data-ng-include="'stakeStatusInfo.html'">
+						</div>
+	                </div>
+	                <div id="stakePort" class="mui-slider-item mui-control-content" style="border-top: 1px solid #d9d9d9">
+	                  	<div data-ng-include="'stakePort.html'">
+						</div>
+	                </div>
+	                <div id="stakePortB" class="mui-slider-item mui-control-content" style="border-top: 1px solid #d9d9d9">
+	                  	<div data-ng-include="'stakePortB.html'">
+						</div>
+	                </div>
+				</div>	
+			</div>
+		<div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+	<script type="text/javascript" src="js/app/stakeBaseInfoController.js"></script>
+</html>

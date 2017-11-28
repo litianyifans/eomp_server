@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/iconfont1.css">
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			.mui-table-view .mui-media-object {
+				line-height: 100px;
+				max-width: 100px;
+				height: 100px;
+			}
+				 .mui-segmented-control .mui-control-item.mui-active {
+			    color: #57a9fa;
+			    background-color:white;
+			    border-bottom: 2px #57a9fa solid;
+			}
+			.mui-segmented-control .mui-control-item {
+				 color: #090909;
+				 border-left: 0px #57a9fa solid;
+			}
+			.mui-segmented-control {
+				 border: 0px #57a9fa solid;
+				 
+			}
+		</style>
+  </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+						<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>  
+			<h1 class="mui-title" style="color:white;" >告警故障</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-segmented-control" style="background-color:white;">
+				<div class="mui-scroll" >
+				<a id="alermInfo.html" class="mui-control-item mui-active" href="#item1mobile">告警信息</a>
+				<a id="faultInfo.html" class="mui-control-item"  href="#item2mobile">故障信息</a>
+				</div>
+				<div class="mui-slider-group"style="padding-top: 40px;" ng-app="app">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active" ng-controller="alermInfosCtrl">
+						<div data-ng-include="'alermInfo.html'">
+						</div>
+	                </div>
+	                <div id="item2mobile" class="mui-slider-item mui-control-content " ng-controller="faultInfosCtrl">
+	                  	<div data-ng-include="'faultInfo.html'">
+						</div>
+	                </div>
+				</div>	
+			</div>
+		<div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/app/alarmtInfoController.js"></script>
+</html>

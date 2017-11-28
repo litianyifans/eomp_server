@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			 .mui-segmented-control .mui-control-item.mui-active {
+			    color: #57a9fa;
+			    background-color:white;
+			    border-bottom: 2px #57a9fa solid;
+			}
+			.mui-segmented-control .mui-control-item {
+				 color: #090909;
+				 border-left: 0px #57a9fa solid;
+			}
+			.mui-segmented-control {
+				 border: 0px #57a9fa solid;
+				 
+			}
+			h4 {
+			    padding: 0.5rem;
+			    font-size: 1rem;
+			    color: #57a9fa;
+			    font-weight: normal;
+			    border-bottom: 1px solid #d9d9d9;
+			    margin-bottom: 0.5rem;
+			}
+			code {
+				font-size: 15px;
+			}
+		</style>
+		
+  </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<span class="mui-icon mui-icon-arrowthinleft" style="color:white;font-size:30px;padding-top: 5px;"></span>
+			<h1 class="mui-title" style="color:white;" >充电桩详情</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-segmented-control" style="background-color:white;">
+				<a class="mui-control-item">基本信息</a>
+				<a class="mui-control-item mui-active" id="prive" href="prive">状态信息</a>
+				<a id="menu-btn" class="mui-control-item" href="Pic.html">A充电口</a>
+				<a class="mui-control-item" href="#popover">B充电口</a>
+				<a class="mui-control-item" href="#popover">统计信息</a>
+			</div>
+			 <div style="background: white;">
+	            <div style="margin-bottom: 0.1rem;">
+	                <h4>充电数据</h4>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>当前SOC</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    %
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>剩余时间</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    秒
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>充电电压</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    V
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>充电电流</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    A
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>需求电压</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    V
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>需求电流</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    A
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>充电时间</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    	秒
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>充电电量</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    KWH
+							</li>	
+						</div>
+					</div>
+	            </div>
+	            <div style="margin-bottom: 0.1rem;">
+	                <h4>出入数据</h4>
+	                	<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>A相电压</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    V
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>A相电流</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    A
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>B相电压</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    V
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>B相电流</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    A
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>C相电压</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    V
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>C相电流</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    A
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>输出电压</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    	V
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>输出电流</code>
+							    <button type="button" class="mui-btn" style="padding: 0px 20px; width: 40%;">0.66</button>
+							    A
+							</li>	
+						</div>
+					</div>
+	            </div>
+	             <div style="margin-bottom: 0.1rem;">
+	                <h4>运行状态</h4>
+	                	<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>连接状态：正常</code>
+							    
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>充电状态：正常</code>
+							</li>	
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>充电模式：恒流充电</code>
+							    
+							</li>
+						</div>
+						<div class="mui-col-xs-6 mui-pull-left">
+							<li style="list-style-type:none; margin-bottom: 5px;">
+							    <code>控制模式：本地手动控制</code>
+							</li>	
+						</div>
+					</div>
+					<ul class="mui-table-view">
+						<div class="mui-row">
+							<div class="mui-col-xs-2 mui-pull-left" style="margin-top: 23px;">
+								<li style="list-style-type:none; margin-bottom: 5px;">
+								    <code>模块1</code>
+								</li>
+							</div>
+							<div class="mui-col-xs-3 mui-pull-left">
+								<li style="list-style-type:none;">
+								    <code>电压：10V</code>
+								</li>	
+								<li style="list-style-type:none;">
+								    <code>电流：10A</code>
+								</li>
+								<li style="list-style-type:none;">
+								    <code>温度：10°C</code>
+								</li>
+							</div>
+							<div class="mui-col-xs-7 mui-pull-left">
+								<li style="list-style-type:none; margin-top: 23px;">
+								    <code>状态：</code>
+								</li>
+							</div>
+						</div>
+					</ul>
+					<ul class="mui-table-view">
+						<div class="mui-row">
+							<div class="mui-col-xs-2 mui-pull-left" style="margin-top: 20px;">
+								<li style="list-style-type:none; margin-bottom: 5px;">
+								    <code>模块2</code>
+								</li>
+							</div>
+							<div class="mui-col-xs-3 mui-pull-left">
+								<li style="list-style-type:none;">
+								    <code>电压：10V</code>
+								</li>	
+								<li style="list-style-type:none;">
+								    <code>电流：10A</code>
+								</li>
+								<li style="list-style-type:none;">
+								    <code>温度：10°C</code>
+								</li>
+							</div>
+							<div class="mui-col-xs-7 mui-pull-left">
+								<li style="list-style-type:none; margin-top: 23px;">
+								    <code>状态：</code>
+								</li>
+							</div>
+						</div>
+					</ul>
+						<ul class="mui-table-view">
+						<div class="mui-row">
+							<div class="mui-col-xs-2 mui-pull-left" style="margin-top: 20px;">
+								<li style="list-style-type:none; margin-bottom: 5px;">
+								    <code>模块3</code>
+								</li>
+							</div>
+							<div class="mui-col-xs-3 mui-pull-left">
+								<li style="list-style-type:none;">
+								    <code>电压：10V</code>
+								</li>	
+								<li style="list-style-type:none;">
+								    <code>电流：10A</code>
+								</li>
+								<li style="list-style-type:none;">
+								    <code>温度：10°C</code>
+								</li>
+							</div>
+							<div class="mui-col-xs-7 mui-pull-left">
+								<li style="list-style-type:none; margin-top: 23px;">
+								    <code>状态：</code>
+								</li>
+							</div>
+						</div>
+					</ul>
+					</div>
+	            </div>
+           </div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+</html>
