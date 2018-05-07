@@ -60,26 +60,24 @@ public class TokenController {
 	@IgnoreSecurity
 	public ResponseResult login(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
-		boolean flag = true ;
-		UserSecurity userSecurity = userService.getUserSecurityByUserId(username) ;
-		
-		if (userSecurity == null) {
-            flag = false ;
-        }
-	    String inputPasswd = (userSecurity.getPasswdSalt() == null ? new Md5(password)
-                : new Md5(password + userSecurity.getPasswdSalt())).getStringDigest();
-	    if (!inputPasswd.equalsIgnoreCase(userSecurity.getUserPwd())) {
-	    	flag = false ;
-        }
-	    if (userSecurity.getAccountStatus() == Accountstatus.STOP.ordinal()) {
-            throw new RuntimeException("该账户已锁定，请联系管理员启用！");
-        }
-
-        if (userSecurity.getAccountStatus() == Accountstatus.ERROR.ordinal()) {
-            throw new RuntimeException("该账户异常，请联系管理员恢复！");
-        }
-        User user = userService.getUserByUserAccount(username) ;
-		if (flag) {
+		try{
+			UserSecurity userSecurity = userService.getUserSecurityByUserId(username) ;
+			if(userSecurity == null) {
+				return new ResponseResult(ResultCode.USER_SECURITY_ERROR);
+	        }
+		    String inputPasswd = (userSecurity.getPasswdSalt() == null ? new Md5(password)
+	                : new Md5(password + userSecurity.getPasswdSalt())).getStringDigest();
+		    if (!inputPasswd.equalsIgnoreCase(userSecurity.getUserPwd())) {
+		    	return new ResponseResult(ResultCode.USER_PASSWORD_LOCK);
+	        }
+		    if (userSecurity.getAccountStatus() == Accountstatus.STOP.ordinal()) {
+		    	return new ResponseResult(ResultCode.USER_ACCOUNT_LOCK);
+	        }
+	
+	        if (userSecurity.getAccountStatus() == Accountstatus.ERROR.ordinal()) {
+	        	return new ResponseResult(ResultCode.USER_ACCOUNT_ERROR);
+	        }
+	        User user = userService.getUserByUserAccount(username) ;
 			String token = defaultTokenManager.createToken(username);
 			log.debug("**** Generate Token **** : " + token);
 			Map<String,String> sessionInfo = new HashMap<String,String>() ;
@@ -88,8 +86,9 @@ public class TokenController {
 			sessionInfo.put(Constants.USER_ID, user.getId()) ;
 			sessionInfo.put(Constants.ORG_ID, user.getOrg().getId()) ;
 			return new ResponseResult(sessionInfo);
+		}catch(Exception e){
+			return new ResponseResult(ResultCode.SYS_ERROR);
 		}
-		return new ResponseResult(ResultCode.LOGIN_CHECK_ERROR);
 	}
 	
 	

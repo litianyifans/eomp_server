@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/iconfont1.css">
+		<style>
+			.mui-content>.mui-table-view:first-child{
+				margin-top: 3px;
+			}
+		</style>
+  </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>  
+			<h1 class="mui-title" style="color:white;" >未入库列表</h1>
+		</header>
+		<div class="mui-content" ng-app="app" ng-controller="stakeUnStoreCtrl">
+				<ul class="mui-table-view" data-ng-repeat="unstake in unstakes" >
+			    <div class="mui-row" style="padding-top:5px;line-height: 10px;">
+			        <div>
+			            <li class="mui-table-view-cell mui-pull-left mui-col-sm-10" >
+			            	<i class="icon iconfont icon-chongdianzhuang" style="color: #0062AC;font-size:19px;"></i>
+			            	<code>{{unstake.stakeNumber}}</code>
+			            </li>
+			        </div>
+			       
+			    </div>
+			    <div class="mui-row" style="line-height: 8px;">
+			    	<!--<div class="mui-col-xs-12 mui-pull-left">
+			         	<li class="mui-table-view-cell " style="padding-top: 25px;" >
+			            	<span data-ng-show="alarm.repairStatus|statusFilter:'1'" class="mui-badge mui-badge-success">已接入</span>
+			            </li>
+			        </div>-->
+			        <div class="mui-col-xs-12">
+			            <li class="mui-table-view-cell">
+			            	<code style="color: black;font-size: 14px;">接入时间：</code>
+			            	<code style="color: gray;font-size: 14px; ;">{{ unstake.createTime | date:'yyyy-MM-dd HH:mm:ss' }}</code>
+			            	<span  class="mui-badge mui-badge-success">已接入</span>
+			            </li>
+			        </div>
+			    </div>
+			</ul>	
+		<div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript"src="js/base.js"></script>
+	<script type="text/javascript" src="js/checkLogin.js"></script>
+	<script type="text/javascript"src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/app/stakeUnStoreListController.js"></script>
+</html>

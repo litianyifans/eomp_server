@@ -18,4 +18,5 @@ public interface StationService {
 	List<Map<String,Object>> getStakeChargeStatusByStakeNumber(String stakeNumber) ;
 	public List<Map<String,Object>> findAlarmInfosByUserIdAndOrgId(Map paramMap) ;
 	public List<Map<String,Object>> findFaultInfosByUserIdAndOrgId(Map paramMap) ;
+	public List<Map<String,Object>> getStakeUnStorageList() ;
 }

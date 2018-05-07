@@ -1,5 +1,5 @@
-//BASE_SERVER_URL="http://112.91.82.56:8086" ;
-BASE_SERVER_URL="http://127.0.0.1:8086" ;
+BASE_SERVER_URL="http://112.91.82.56:8086" ;
+//BASE_SERVER_URL="http://127.0.0.1:8086" ;
 LOGIN_FLAG = false ;
 /*mui.plusReady(function(){
      alert("当前页面URL："+plus.webview.currentWebview().getURL());
@@ -21,15 +21,11 @@ function postData(url, data, callback) {
         success:function(data){
         	if(data.code == 200){
         		callback(data);
-        	}else if(data.code==444){
-        		mui.toast('登陆已失效,请先登陆!') ;
-        		mui.openWindow("login.html","login.html");
-        	}else if(data.code==500){
-        		mui.openWindow("login.html","login.html");
-        		mui.toast("网络异常");
         	}else{
-        		mui.toast("系统异常正在维护");
+        		mui.toast(data.message);
+        		mui.openWindow("login.html","login.html");
         	}
+        	
         },
         error:function(e){  
             mui.toast("网络异常");
@@ -51,15 +47,11 @@ function getData(url,callback) {
         success:function(data){
         	if(data.code == 200){
         		callback(data);
-        	}else if(data.code==444){
-        		mui.toast('登陆已失效,请先登陆!') ;
-        		//mui.openWindow("login.html","login.html");
-        	}else if(data.code==500){
-        		//mui.openWindow("login.html","login.html");
-        		mui.toast("网络异常");
         	}else{
-        		mui.toast("系统异常正在维护");
+        		mui.openWindow("login.html","login.html");
+        		mui.toast(data.message);
         	}
+        
         },
         error:function(e){  
             mui.toast("网络异常");

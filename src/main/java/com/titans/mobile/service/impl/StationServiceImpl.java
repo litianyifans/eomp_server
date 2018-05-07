@@ -43,4 +43,9 @@ public class StationServiceImpl implements StationService{
 	public List<Map<String,Object>> findFaultInfosByUserIdAndOrgId(Map paramMap){
 		return stationMapper.findFaultInfosByUserIdAndOrgId(paramMap) ;
 	}
+	
+	public List<Map<String,Object>> getStakeUnStorageList(){
+		return stationMapper.getStakeUnStorageList();
+	}
+
 }

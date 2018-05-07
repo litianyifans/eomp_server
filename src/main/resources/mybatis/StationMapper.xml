@@ -24,13 +24,14 @@
          </association>   
 	</resultMap>   
  	<select id="getStationsInfoByUserAccount" parameterType="java.lang.String"  resultMap="Station">
-				SELECT
-					t.*,
-					o.id orgID,
-					o.orgName orgName,
-					o.orgCode orgCode,
+					SELECT
+					s.stationName ,
+					 max(s.ID) id ,
+                    max(s.address) address,
+                    max(o.id) orgID,
+					max(o.orgName) orgName,
+					max(o.orgCode) orgCode,
 					sum(statusCount) AS sumStakes,
-					'0' AS flag,
 					sum(
 				
 						IF (
@@ -66,14 +67,14 @@
 				FROM
 					(
 						SELECT
-							s.*, rt.stakeChargeStatus AS stakeStatus,
+							es.stationId, rt.stakeChargeStatus AS stakeStatus,
 							COUNT(rt.stakeChargeStatus) AS statusCount
 						FROM
-							eomp_em_station s
-						LEFT JOIN eomp_em_stake t ON s.ID = t.stationId
-						LEFT JOIN eomp_rtm_stakestatus rt ON rt.stakeNum = t.stakeNumber
+						
+						eomp_em_stake es
+						LEFT JOIN eomp_rtm_stakestatus rt ON rt.stakeNum = es.stakeNumber
 						WHERE
-							s.ID IN (
+							es.stationId IN (
 								SELECT
 									d.bizID
 								FROM
@@ -83,17 +84,16 @@
 								AND d.bizIDFlag = 0
 							)
 						GROUP BY
-							s.stationName,
+							es.stationId,
 							rt.stakeChargeStatus
-					) AS t
-				LEFT JOIN eomp_sys_org o ON t.orgId = o.id
-				GROUP BY
-					stationName
+					) t LEFT JOIN eomp_em_station s  on t.stationId = s.ID
+              left join eomp_sys_org o ON s.orgId = o.id
+					GROUP BY s.stationName
 	</select> 
 	
 	<select id="getStakesByStationId" parameterType="java.lang.String"  resultType="com.titans.mobile.model.Stake">
-		SELECT
-			a.*,
+		select b.* , t.chargeStatus from (SELECT
+			a.stakeNumber,
 		IF (
 			b.chargeStatus = NULL,
 			'离线',
@@ -105,7 +105,8 @@
 		WHERE
 			a.stationId = #{stationId}
 		GROUP BY
-			a.stakeNumber
+			a.stakeNumber ,chargeStatus) t LEFT JOIN eomp_em_stake b on t.stakeNumber = b.stakeNumber
+		
 	</select>
 	
 	<select id="getStakeInfoByStakeNumber" parameterType="java.lang.String"  resultType="java.util.Map">
@@ -263,6 +264,46 @@
 					)
 				)
 			)
+	</select>
+	
+	<select id="getStakeUnStorageList"  resultType="java.util.Map">
+		SELECT
+				b.stakeNumber,
+				b.stakeChargeStatus,
+				b.createTime,
+				b.cityCode,
+				b.orgCode,
+				d.orgName,
+				e. NAME cityName,
+				'已接入' connectState
+			FROM
+				(
+					SELECT
+						LEFT (
+							a.stakeNum,
+							INSTR(a.stakeNum, '_') - 1
+						) cityCode,
+						a.stakeNum stakeNumber,
+						a.stakeChargeStatus,
+						a.createTime,
+						REVERSE(
+							LEFT (
+								REVERSE(a.stakeNum),
+								INSTR(REVERSE(a.stakeNum), '_') - 1
+							)
+						) orgCode
+					FROM
+						eomp_rtm_stakestatus a
+				) b
+			LEFT JOIN eomp_em_stake c ON b.stakeNumber = c.stakeNumber
+			LEFT JOIN eomp_sys_org d ON b.orgCode = d.orgCode
+			LEFT JOIN eomp_city e ON b.cityCode = e. CODE
+			WHERE
+				c.alias IS NULL
+			ORDER BY
+				b.orgCode,
+				b.cityCode,
+				b.createTime DESC
 	</select>
 	
 </mapper>

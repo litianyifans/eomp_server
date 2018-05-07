@@ -85,6 +85,13 @@ public class StationManagerController {
 		return  new ResponseResult(alarmInfos);
 	}  
 	
+	@RequestMapping(value = "/getStakeCompareMap", method = RequestMethod.GET, produces = "application/json")
+	//@IgnoreSecurity
+	public ResponseResult getStakeCompareMap() {
+		List<Map<String,Object>> stakes = stationService.getStakeUnStorageList();
+		return  new ResponseResult(stakes);
+	}  
+	
 	
 
 	

@@ -60,20 +60,28 @@
 		<div class="mui-content">
 			<div class="navs">
 						<div id="friend/friend" style="display: block; border: none;">
+							<div ng-click="queryByStationType('chargeCount')">
 							<div>{{sumChargeCount}}</div>
 							<div>充电</div>
+							</div>
 						</div>
 						<div id="myfatie" tyle="display: block; border: none;">
+							<div ng-click="queryByStationType('freeCount')">
 							<div>{{sumFreeCount}}</div>
 							<div>空闲</div>
+							</div>
 						</div>
 						<div id="../world/mysubscriptions" tyle="display: block; border: none;">
+							<div ng-click="queryByStationType('faultCount')">
 							<div>{{sumFaultCount}}</div>
 							<div>故障</div>
+							</div>
 						</div>
 						<div tyle="display: block; border: none;">
+							<div ng-click="queryByStationType('offlineCount')">
 							<div>{{sumOfflineCount}}</div>
 							<div>离线</div>
+							</div>
 						</div>
 			</div>
 			<div  style="background: white;margin-top:80px; text-align: center;">

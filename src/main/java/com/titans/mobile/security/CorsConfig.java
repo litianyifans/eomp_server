@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class CorsConfig extends  WebMvcConfigurerAdapter{
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("/**").allowedOrigins("http://127.0.0.1:8020,http://127.0.0.1:8080").allowedHeaders("Content-Type,X-Token,Access-Control-Allow-Origin,X-Requested-With")
+	        registry.addMapping("/**").allowedOrigins("http://127.0.0.1:8020,http://127.0.0.1:8080,http://112.91.82.56:8086,http://localhost:8086,http://10.62.14.100:8086").allowedHeaders("Content-Type,X-Token,Access-Control-Allow-Origin,X-Requested-With")
 	                .allowedMethods("GET", "HEAD", "POST","PUT", "DELETE", "OPTIONS")
 	                .allowCredentials(true).maxAge(3600);
 	    }

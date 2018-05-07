@@ -28,6 +28,21 @@ app.controller('stationsCtrl', function($scope, $filter,$http,$rootScope) {
 		$scope.stations=$filter("filter")($rootScope.stations,{'stationName':stationName});
 		$scope.sumStationData($scope.stations);
 	}
+   	$scope.queryByStationType = function(stationType){
+		$scope.stations=$filter("filter")($rootScope.stations,function(value, index, array){
+			if('chargeCount'== stationType){
+				return value.chargeCount > 0 ;
+			}else if('offlineCount'== stationType){
+				return value.offlineCount > 0 ;
+			}
+			else if('freeCount'== stationType){
+				return value.freeCount > 0 ;
+			}
+			else if('faultCount'== stationType){
+				return value.faultCount > 0 ;
+			}
+		});
+	}
    	$scope.queryStationDetail = function(station){
    			localStorage.removeItem('stationId');
    			localStorage.removeItem('stationName');

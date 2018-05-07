@@ -29,4 +29,6 @@ public interface StationMapper {
 	List<Map<String,Object>> findAlarmInfosByUserIdAndOrgId(Map paramMap) ;
 	
 	List<Map<String,Object>> findFaultInfosByUserIdAndOrgId(Map paramMap) ;
+	
+	List<Map<String,Object>> getStakeUnStorageList() ;
 }

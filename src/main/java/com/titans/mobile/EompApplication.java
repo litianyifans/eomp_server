@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 public class EompApplication {
 	public static void main(String[] args) {
-		
 		SpringApplication.run(EompApplication.class, args);
 		System.out.println("*****************************");
 		System.out.println("*****************************");
@@ -18,5 +17,4 @@ public class EompApplication {
 		System.out.println("*****************************");
 		System.out.println("*****************************");
 	}
-
 }
