@@ -47,5 +47,8 @@ public class StationServiceImpl implements StationService{
 	public List<Map<String,Object>> getStakeUnStorageList(){
 		return stationMapper.getStakeUnStorageList();
 	}
-
+	
+	public List<Map<String,Object>> findStakeChargeReport(Map paramMap){
+		return stationMapper.getStakeChargeReportList(paramMap);
+	}
 }

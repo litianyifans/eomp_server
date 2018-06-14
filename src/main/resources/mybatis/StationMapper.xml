@@ -306,4 +306,35 @@
 				b.createTime DESC
 	</select>
 	
+	<select id="getStakeChargeReportList"  parameterType="java.util.Map" resultType="java.util.Map">
+	
+		SELECT
+			<if test='type == "day"'>
+			    DATE_FORMAT(finishTime, "%Y%m%d%H") ft,
+			</if>
+			<if test='type == "month"'>
+			    DATE_FORMAT(finishTime, "%Y%m%d") ft,
+			</if>
+			<if test='type == "year"'>
+			    DATE_FORMAT(finishTime, "%Y%m") ft,
+			</if>
+			SUM(chargeDegree) chargeDegreeSum,
+			COUNT(1) chargeCount
+		FROM
+			eomp_rtm_electricityrecord
+		WHERE
+			1=1 and 
+			<if test='type == "day"'>
+			    DATE_FORMAT(finishTime, "%Y%m%d") = "20170810"
+			</if>
+			<if test='type == "month"'>
+			   DATE_FORMAT(finishTime, "%Y%m") = "201708"
+			</if>
+			<if test='type == "year"'>
+			    DATE_FORMAT(finishTime, "%Y") = "2017"
+			</if>			
+		GROUP BY
+			ft
+	</select>
+	
 </mapper>

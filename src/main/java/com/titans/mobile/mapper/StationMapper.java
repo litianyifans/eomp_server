@@ -31,4 +31,6 @@ public interface StationMapper {
 	List<Map<String,Object>> findFaultInfosByUserIdAndOrgId(Map paramMap) ;
 	
 	List<Map<String,Object>> getStakeUnStorageList() ;
+	
+	List<Map<String,Object>> getStakeChargeReportList (Map paramMap);
 }

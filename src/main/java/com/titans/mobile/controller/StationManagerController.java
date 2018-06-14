@@ -85,6 +85,8 @@ public class StationManagerController {
 		return  new ResponseResult(alarmInfos);
 	}  
 	
+	
+	
 	@RequestMapping(value = "/getStakeCompareMap", method = RequestMethod.GET, produces = "application/json")
 	//@IgnoreSecurity
 	public ResponseResult getStakeCompareMap() {
@@ -94,5 +96,13 @@ public class StationManagerController {
 	
 	
 
+	@RequestMapping(value = "/getStakeChargeReport/{type}", method = RequestMethod.GET,produces = "application/json")
+	@IgnoreSecurity
+	public ResponseResult getStakeChargeReport(@PathVariable String type) {
+		Map<String,String> paramMap = new HashMap<String,String>() ;
+		paramMap.put("type", type) ;
+		List<Map<String,Object>> alarmInfos = stationService.findStakeChargeReport(paramMap);
+		return  new ResponseResult(alarmInfos);
+	}  
 	
 }

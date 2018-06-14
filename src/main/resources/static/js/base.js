@@ -1,5 +1,5 @@
-BASE_SERVER_URL="http://112.91.82.56:8086" ;
-//BASE_SERVER_URL="http://127.0.0.1:8086" ;
+//BASE_SERVER_URL="http://112.91.82.56:8086" ;
+BASE_SERVER_URL="http://127.0.0.1:8086" ;
 LOGIN_FLAG = false ;
 /*mui.plusReady(function(){
      alert("当前页面URL："+plus.webview.currentWebview().getURL());

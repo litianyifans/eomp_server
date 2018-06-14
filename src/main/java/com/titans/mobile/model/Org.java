@@ -1,5 +1,7 @@
 package com.titans.mobile.model;
 
+import java.util.List;
+
 public class Org {
 	/**
 	 * 序列化serialVersionUID.
@@ -51,6 +53,7 @@ public class Org {
 	private int operator;
 
 	
+	private List<Org> orgs ;
 	
 	public Org() {
 	}
@@ -163,6 +166,16 @@ public class Org {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	public List<Org> getOrgs() {
+		return orgs;
+	}
+
+
+	public void setOrgs(List<Org> orgs) {
+		this.orgs = orgs;
 	}
 	
 	

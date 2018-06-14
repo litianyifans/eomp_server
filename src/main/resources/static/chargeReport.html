@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>充电统计</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<style type="text/css">
+			.mui-segmented-control .mui-control-item.mui-active {
+			    color: #57a9fa;
+			    background-color:white;
+			    border-bottom: 2px #57a9fa solid;
+			}
+			.mui-segmented-control .mui-control-item {
+				 color: #090909;
+				 border-left: 0px #57a9fa solid;
+			}
+			.mui-segmented-control {
+				 border: 0px #57a9fa solid;
+				 
+			}
+			.mui-table-view-cell:after{
+				height:0
+			}
+			#list-title > li{
+				border-right: 1px solid white;
+				background: #57a9fa;
+				text-align: center;
+				color: white;
+			}
+			#list-title > li:last-child{
+				border-right:none;
+			}
+			#list-content:nth-of-type(odd) > li{
+				border-right: 1px solid white;
+				text-align: center;
+				background: white;
+			}
+			#list-content:nth-of-type(even) > li{
+				border-right: 1px solid white;
+				text-align: center;
+				background: #cccccccc;
+			}
+			#list-content> li:last-child{
+				border-right:none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:#57a9fa;">
+			<a href="home.html"><span class="mui-icon mui-icon-arrowthinleft" style="color:white;font-size:30px;padding-top: 5px;"></span>
+			</a>
+			<h1 class="mui-title" style="color:white;">充电统计</h1>
+		</header>
+
+		<div class="mui-content own-content-padding">
+			<div style="background: white;margin-top: 0px;">
+				<div class="mui-row">
+					<ul class="mui-table-view mui-col-xs-4 mui-pull-left">
+						<li id="stakeType" class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right">运营商</a>
+						</li>
+					</ul>
+					<ul class="mui-table-view mui-col-xs-4 mui-pull-left">
+						<li id="stakeStatus" class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right">充电站</a>
+						</li>
+					</ul>
+					<ul class="mui-table-view mui-col-xs-4 mui-pull-left">
+						<li id="stakeStatus" class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right">日期</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="popover" class="mui-popover">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#">Item1</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#">Item2</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#">Item3</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#">Item4</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#">Item5</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-segmented-control" style="background-color:white;">
+				<div class="mui-scroll" >
+				<a id="alermInfo.html" class="mui-control-item mui-active" href="#item1mobile">按时段</a>
+				<a id="faultInfo.html" class="mui-control-item"  href="#item2mobile">按电桩</a>
+				</div>
+				<div class="mui-slider-group"style="padding-top: 40px;">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active" >
+							<div id="houseQuery" style="width:100%;height: 200px;">
+								
+							</div>
+	                </div>
+	                <div id="item2mobile" class="mui-slider-item mui-control-content ">
+	                  	    sdfas
+	                </div>
+				</div>	
+			</div>
+			<ul id="list-title"class="mui-table-view"  >
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >充电时间段</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >充电次数</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >充电量(kwh)</li>
+			</ul>
+			<ul id="list-content" class="mui-table-view" >
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 1</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 2</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 3</li>
+			</ul>
+			<ul id="list-content" class="mui-table-view" >
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 1</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 2</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 3</li>
+			</ul>	
+			<ul id="list-content" class="mui-table-view" >
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 1</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 2</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 3</li>
+			</ul>
+			<ul id="list-content" class="mui-table-view" >
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 1</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 2</li>
+			    <li class="mui-table-view-cell mui-pull-left mui-col-xs-4" >Item 3</li>
+			</ul>	
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/echarts-all.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			var myChart = echarts.init(document.getElementById('houseQuery')); 
+			var idx = 1;
+			option = {  
+            legend: {
+            	orient:'vertical',
+            	x:'right',
+            	textStyle:{algin:'right'},
+                data:[{name : 'Chrome', 
+					   textStyle : {align:'right'}, 
+					   icon : 'stack'},
+					  {name : 'Chrome',
+					   textStyle : {align:'right'}, 
+					   icon : 'stack'}]
+            },
+
+            series : [
+                {
+                    name:'浏览器（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    itemStyle : {
+				        normal : {
+				            label : {
+				              show : true,
+							  position: 'inner',
+							  distance : 0.6,
+							  formatter : function (params) {                         
+		                          return (params.percent - 0).toFixed(0) + '%'
+		                      },
+	                		  textStyle : {
+	                			align : 'center',
+	                            baseline : 'middle',
+	                            fontFamily : '微软雅黑',
+	                            fontSize : 10,
+	                            fontWeight : 'bolder'
+	                          },
+				            },
+				            labelLine : {
+				              show : false
+				            }
+				          },
+				
+				        },
+		                data:[
+                        {value: idx * 128 + 80,  name:'Chrome'},
+                        {value: idx * 64  + 160,  name:'Firefox'},
+                        {value: idx * 32  + 320,  name:'Safari'},
+                        {value: idx * 16  + 640,  name:'IE9+'},
+                        {value: idx++ * 8  + 1280, name:'IE8-'}
+                    ]
+                }
+            ]};
+            // 为echarts对象加载数据 
+            myChart.setOption(option); 
+		</script>
+
+	</body>
+
+</html>
